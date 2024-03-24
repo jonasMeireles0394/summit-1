@@ -29,4 +29,16 @@ public class CategoryController {
     public @ResponseBody Category create(@RequestBody Category category){
         return service.create(category);
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable(name = "id") Long id){
+        service.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    public Category update(@PathVariable(name = "id") Long id, @RequestBody Category updatedCategory) {
+        updatedCategory.setId(id);
+        return service.update(updatedCategory);
+    }
+
 }

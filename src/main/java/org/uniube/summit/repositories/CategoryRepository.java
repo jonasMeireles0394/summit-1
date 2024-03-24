@@ -23,4 +23,16 @@ public class CategoryRepository {
     public Category save(Category category){
         return repositoryJPA.save(category);
     }
+
+    public void deleteById(Long id){
+        repositoryJPA.deleteById(id);
+    }
+
+    public Category update(Category category){
+        if (category.getId() != null && repositoryJPA.existsById(category.getId())){
+            return repositoryJPA.save(category);
+        } else {
+            throw new IllegalArgumentException("Identificador deve ser nulo para operação de atualização!");
+        }
+    }
 }

@@ -3,6 +3,8 @@ package org.uniube.summit.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.uniube.summit.domain.Category;
 import org.uniube.summit.repositories.CategoryRepository;
 import org.yaml.snakeyaml.util.EnumUtils;
@@ -31,4 +33,18 @@ public class CategoryService {
         }
         return repository.save(category);
     }
+
+    @Transactional
+    public void delete(Long id){
+        repository.deleteById(id);
+    }
+
+    @Transactional
+    public Category update(Category category){
+        if (category.getId() == null){
+            throw new IllegalArgumentException("Identificador deve ser fornecido para operação de atualização!");
+        }
+        return repository.update(category);
+    }
+
 }
