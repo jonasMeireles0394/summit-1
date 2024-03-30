@@ -19,4 +19,30 @@ public class EventAddresService {
         return repository.findAll();
     }
 
+    @Transactional(readOnly = true)
+    public EventAddres get(Long id){
+        return repository.get(id);
+    }
+
+    @Transactional
+    public EventAddres create(EventAddres eventAddres){
+        if(eventAddres.getId() != null){
+            throw new IllegalArgumentException("Identificador deve ser nulo para operação de cadastro!");
+        }
+        return repository.save(eventAddres);
+    }
+
+    @Transactional
+    public void deleteById(Long id){
+        repository.deleteById(id);
+    }
+
+    @Transactional
+    public EventAddres update(EventAddres eventAddres){
+        if(eventAddres.getId() == null){
+            throw new IllegalArgumentException("Identificador deve ser fornecido para operação de atualização!");
+        }
+        return repository.update(eventAddres);
+    }
+
 }

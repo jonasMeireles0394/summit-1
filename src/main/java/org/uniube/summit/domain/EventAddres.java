@@ -16,7 +16,7 @@ public class EventAddres {
     private String district;
     private String city;
     private String complement;
-    private String zipCode;
+    private String zipcode;
 
     public Long getId() {
         return id;
@@ -75,11 +75,11 @@ public class EventAddres {
     }
 
     public String getZipCode() {
-        return zipCode;
+        return zipcode;
     }
 
     public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+        this.zipcode = zipCode;
     }
 
     @Override
@@ -92,7 +92,7 @@ public class EventAddres {
                 ", district='" + district + '\'' +
                 ", city='" + city + '\'' +
                 ", complement='" + complement + '\'' +
-                ", zipCode='" + zipCode + '\'' +
+                ", zipcode='" + zipcode + '\'' +
                 '}';
     }
 }

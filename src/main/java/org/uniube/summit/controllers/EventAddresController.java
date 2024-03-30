@@ -19,4 +19,24 @@ public class EventAddresController {
         return service.findAll();
     }
 
+    @GetMapping("/{id}")
+    public @ResponseBody EventAddres get(@PathVariable(name = "id") Long id){
+        return service.get(id);
+    }
+
+    @PostMapping
+    public @ResponseBody EventAddres create(@RequestBody EventAddres eventAddres){
+        return service.create(eventAddres);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable(name = "id") Long id){
+        service.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public EventAddres update(@PathVariable(name = "id") Long id, @RequestBody EventAddres updateEventAddres){
+        updateEventAddres.setId(id);
+        return service.update(updateEventAddres);
+    }
 }
