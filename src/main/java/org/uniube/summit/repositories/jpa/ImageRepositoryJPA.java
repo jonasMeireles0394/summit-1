@@ -1,4 +1,4 @@
-package org.uniube.summit.repositories;
+package org.uniube.summit.repositories.jpa;
 
 import org.ietf.jgss.Oid;
 import org.springframework.data.jpa.repository.JpaRepository;

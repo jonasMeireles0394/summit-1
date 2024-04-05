@@ -3,11 +3,8 @@ package org.uniube.summit.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.uniube.summit.domain.Category;
-import org.uniube.summit.repositories.CategoryRepository;
-import org.yaml.snakeyaml.util.EnumUtils;
+import org.uniube.summit.repositories.implementation.CategoryRepository;
 
 import java.util.List;
 

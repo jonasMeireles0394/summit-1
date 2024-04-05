@@ -1,8 +1,9 @@
-package org.uniube.summit.repositories;
+package org.uniube.summit.repositories.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.uniube.summit.domain.Category;
+import org.uniube.summit.repositories.jpa.CategoryRepositoryJPA;
 
 import java.util.List;
 
