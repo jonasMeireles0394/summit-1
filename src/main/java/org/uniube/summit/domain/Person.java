@@ -1,12 +1,9 @@
 package org.uniube.summit.domain;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
 
 import java.util.Date;
-
+@Entity
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_seq")
