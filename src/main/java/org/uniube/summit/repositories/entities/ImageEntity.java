@@ -1,10 +1,10 @@
-package org.uniube.summit.domain;
+package org.uniube.summit.repositories.entities;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "image")
-public class Image {
+public class ImageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "image_seq")
     @SequenceGenerator(name = "image_seq", sequenceName = "image_seq", allocationSize=1)

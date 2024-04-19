@@ -2,7 +2,7 @@ package org.uniube.summit.repositories.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.uniube.summit.domain.Category;
+import org.uniube.summit.repositories.entities.CategoryEntity;
 import org.uniube.summit.repositories.jpa.CategoryRepositoryJPA;
 
 import java.util.List;
@@ -13,15 +13,15 @@ public class CategoryRepository {
     @Autowired
     private CategoryRepositoryJPA repositoryJPA;
 
-    public List<Category>findAll(){
+    public List<CategoryEntity>findAll(){
         return repositoryJPA.findAll();
     }
 
-    public Category get(Long id){
+    public CategoryEntity get(Long id){
         return repositoryJPA.findById(id).orElse(null);
     }
 
-    public Category save(Category category){
+    public CategoryEntity save(CategoryEntity category){
         return repositoryJPA.save(category);
     }
 
@@ -29,7 +29,7 @@ public class CategoryRepository {
         repositoryJPA.deleteById(id);
     }
 
-    public Category update(Category category){
+    public CategoryEntity update(CategoryEntity category){
         if (category.getId() != null && repositoryJPA.existsById(category.getId())){
             return repositoryJPA.save(category);
         } else {

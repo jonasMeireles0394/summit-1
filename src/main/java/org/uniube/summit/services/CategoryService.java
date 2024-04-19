@@ -1,10 +1,11 @@
 package org.uniube.summit.services;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.uniube.summit.domain.Category;
+import org.uniube.summit.repositories.entities.CategoryEntity;
 import org.uniube.summit.repositories.implementation.CategoryRepository;
+import org.uniube.summit.services.mappers.CategoryMapper;
 
 import java.util.List;
 
@@ -15,12 +16,14 @@ public class CategoryService {
 
     @Transactional(readOnly = true)
     public List<Category>findAll(){
-        return repository.findAll();
+
+        return repository.findAll().stream().map(CategoryMapper::out).toList();
     }
 
     @Transactional(readOnly = true)
     public Category get(Long id){
-        return repository.get(id);
+
+        return CategoryMapper.out(repository.get(id));
     }
 
     @Transactional
@@ -28,7 +31,8 @@ public class CategoryService {
         if (category.getId() != null) {
             throw new IllegalArgumentException("Identificador deve ser nulo para operação de cadastro!");
         }
-        return repository.save(category);
+        CategoryEntity entity = CategoryMapper.in(category);
+        return CategoryMapper.out(repository.save(entity));
     }
 
     @Transactional
@@ -41,7 +45,8 @@ public class CategoryService {
         if (category.getId() == null){
             throw new IllegalArgumentException("Identificador deve ser fornecido para operação de atualização!");
         }
-        return repository.update(category);
+        CategoryEntity entity = CategoryMapper.in(category);
+        return CategoryMapper.out(repository.save(entity));
     }
 
 }

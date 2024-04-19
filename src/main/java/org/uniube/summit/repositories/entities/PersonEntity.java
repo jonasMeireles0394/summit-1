@@ -1,11 +1,11 @@
-package org.uniube.summit.domain;
+package org.uniube.summit.repositories.entities;
 
 import jakarta.persistence.*;
 
 import java.util.Date;
 @Entity
 @Table(name = "person")
-public class Person {
+public class PersonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_seq")
     @SequenceGenerator(name = "person_seq", sequenceName = "person_seq", allocationSize=1)

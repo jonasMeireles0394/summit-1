@@ -3,8 +3,10 @@ package org.uniube.summit.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.uniube.summit.domain.EventAddres;
+import org.uniube.summit.domain.EventAddres;;
+import org.uniube.summit.repositories.entities.EventAddresEntity;
 import org.uniube.summit.repositories.implementation.EventAddresRepository;
+import org.uniube.summit.services.mappers.EventAddressMapper;
 
 import java.util.List;
 
@@ -15,12 +17,12 @@ public class EventAddresService {
 
     @Transactional(readOnly = true)
     public List<EventAddres> findAll(){
-        return repository.findAll();
+        return repository.findAll().stream().map(EventAddressMapper::out).toList();
     }
 
     @Transactional(readOnly = true)
     public EventAddres get(Long id){
-        return repository.get(id);
+        return EventAddressMapper.out(repository.get(id));
     }
 
     @Transactional
@@ -28,7 +30,8 @@ public class EventAddresService {
         if(eventAddres.getId() != null){
             throw new IllegalArgumentException("Identificador deve ser nulo para operação de cadastro!");
         }
-        return repository.save(eventAddres);
+        EventAddresEntity entity = EventAddressMapper.in(eventAddres);
+        return EventAddressMapper.out(repository.save(entity));
     }
 
     @Transactional
@@ -41,7 +44,8 @@ public class EventAddresService {
         if(eventAddres.getId() == null){
             throw new IllegalArgumentException("Identificador deve ser fornecido para operação de atualização!");
         }
-        return repository.update(eventAddres);
+        EventAddresEntity entity = EventAddressMapper.in(eventAddres);
+        return EventAddressMapper.out(repository.save(entity));
     }
 
 }

@@ -1,12 +1,11 @@
 package org.uniube.summit.services;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.uniube.summit.domain.Category;
 import org.uniube.summit.domain.Event;
-import org.uniube.summit.repositories.implementation.CategoryRepository;
+import org.uniube.summit.repositories.entities.EventEntity;
 import org.uniube.summit.repositories.implementation.EventRepository;
+import org.uniube.summit.services.mappers.EventMapper;
 
 import java.util.List;
 
@@ -17,12 +16,14 @@ public class EventService {
 
     @Transactional(readOnly = true)
     public List<Event>findAll(){
-        return repository.findAll();
+
+        return repository.findAll().stream().map(EventMapper::out).toList();
     }
 
     @Transactional(readOnly = true)
     public Event get(Long id){
-        return repository.get(id);
+
+        return EventMapper.out(repository.get(id));
     }
 
     @Transactional
@@ -30,7 +31,8 @@ public class EventService {
         if (event.getId() != null) {
             throw new IllegalArgumentException("Identificador deve ser nulo para operação de cadastro!");
         }
-        return repository.save(event);
+        EventEntity entity = EventMapper.in(event);
+        return EventMapper.out(repository.save(entity));
     }
 
     @Transactional
@@ -43,7 +45,8 @@ public class EventService {
         if (event.getId() == null){
             throw new IllegalArgumentException("Identificador deve ser fornecido para operação de atualização!");
         }
-        return repository.update(event);
+        EventEntity entity = EventMapper.in(event);
+        return EventMapper.out(repository.save(entity));
     }
 
 }

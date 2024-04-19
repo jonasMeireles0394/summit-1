@@ -2,7 +2,7 @@ package org.uniube.summit.repositories.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.uniube.summit.domain.Event;
+import org.uniube.summit.repositories.entities.EventEntity;
 import org.uniube.summit.repositories.jpa.EventRepositoryJPA;
 
 import java.util.List;
@@ -12,15 +12,15 @@ public class EventRepository {
     @Autowired
     private EventRepositoryJPA repositoryJPA;
 
-    public List<Event> findAll(){
+    public List<EventEntity> findAll(){
         return repositoryJPA.findAll();
     }
 
-    public Event get(Long id){
+    public EventEntity get(Long id){
         return repositoryJPA.findById(id).orElse(null);
     }
 
-    public Event save(Event event){
+    public EventEntity save(EventEntity event){
         return repositoryJPA.save(event);
     }
 
@@ -28,7 +28,7 @@ public class EventRepository {
         repositoryJPA.deleteById(id);
     }
 
-    public Event update(Event event){
+    public EventEntity update(EventEntity event){
         if (event.getId() != null && repositoryJPA.existsById(event.getId())){
             return repositoryJPA.save(event);
         } else {
