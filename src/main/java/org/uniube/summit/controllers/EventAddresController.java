@@ -2,41 +2,41 @@ package org.uniube.summit.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.uniube.summit.domain.EventAddres;
-import org.uniube.summit.services.EventAddresService;
+import org.uniube.summit.domain.Event;
+import org.uniube.summit.services.EventService;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/eventaddres")
+@RequestMapping("/eventAddress")
 public class EventAddresController {
     @Autowired
-    private EventAddresService service;
+    private EventService service;
 
     @GetMapping
-    public @ResponseBody List<EventAddres>findAll(){
+    public @ResponseBody List<Event>findAll(){
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody EventAddres get(@PathVariable(name = "id") Long id){
+    public @ResponseBody Event get(@PathVariable(name = "id") Long id){
         return service.get(id);
     }
 
     @PostMapping
-    public @ResponseBody EventAddres create(@RequestBody EventAddres eventAddres){
-        return service.create(eventAddres);
+    public @ResponseBody Event create(@RequestBody Event event){
+        return service.create(event);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable(name = "id") Long id){
-        service.deleteById(id);
+        service.delete(id);
     }
 
     @PutMapping("/{id}")
-    public EventAddres update(@PathVariable(name = "id") Long id, @RequestBody EventAddres updateEventAddres){
-        updateEventAddres.setId(id);
-        return service.update(updateEventAddres);
+    public Event update(@PathVariable(name = "id") Long id, @RequestBody Event updateEvent){
+        updateEvent.setId(id);
+        return service.update(updateEvent);
     }
 }

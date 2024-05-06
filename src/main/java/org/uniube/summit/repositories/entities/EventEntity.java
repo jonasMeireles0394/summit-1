@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 @Entity
+@Table(name = "event")
 public class EventEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_seq")

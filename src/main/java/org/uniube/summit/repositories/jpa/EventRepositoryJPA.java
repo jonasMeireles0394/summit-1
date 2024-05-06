@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface EventRepositoryJPA extends JpaRepository<EventEntity, Long> {
-    @Query("Select event from Event event")
+    @Query("Select event from EventEntity event")
     public List<EventEntity> findAll();
 
 }

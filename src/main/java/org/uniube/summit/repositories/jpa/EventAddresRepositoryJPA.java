@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface EventAddresRepositoryJPA extends JpaRepository<EventAddresEntity, Long> {
-    @Query("Select eventaddres from EventAddres eventaddres")
+    @Query("Select eventaddres from EventAddresEntity eventaddres")
     public List<EventAddresEntity>findAll();
 
 }

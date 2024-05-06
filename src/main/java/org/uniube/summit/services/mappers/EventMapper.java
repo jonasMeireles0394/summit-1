@@ -1,5 +1,6 @@
 package org.uniube.summit.services.mappers;
 import org.uniube.summit.domain.Event;
+import org.uniube.summit.repositories.entities.EventAddresEntity;
 import org.uniube.summit.repositories.entities.EventEntity;
 
 public class EventMapper {
@@ -10,7 +11,7 @@ public class EventMapper {
         Event domain = new Event();
         domain.setId(entity.getId());
         domain.setCategoryid(entity.getCategoryid());
-        domain.setEventaddressid(entity.getEventaddressid());
+        // domain.setEventaddress(EventAddressMapper.out(addresEntity));
         domain.setName(entity.getName());
         domain.setInitialdate(entity.getInitialdate());
         domain.setEnddate(entity.getEnddate());
@@ -26,7 +27,7 @@ public class EventMapper {
         EventEntity entity = new EventEntity();
         entity.setId(domain.getId());
         entity.setCategoryid(domain.getCategoryid());
-        entity.setEventaddressid(domain.getEventaddressid());
+        entity.setEventaddressid(domain.getEventaddress()!=null?domain.getEventaddress().getId():null);
         entity.setName(domain.getName());
         entity.setInitialdate(domain.getInitialdate());
         entity.setEnddate(domain.getEnddate());

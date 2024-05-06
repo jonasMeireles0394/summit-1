@@ -2,12 +2,7 @@ package org.uniube.summit.domain;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "eventaddres")
 public class EventAddres {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "eventaddres_seq")
-    @SequenceGenerator(name = "eventaddres_seq", sequenceName = "eventaddres_seq", allocationSize=1)
 
     private Long id;
     private Long number;

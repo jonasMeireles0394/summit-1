@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface CategoryRepositoryJPA extends JpaRepository<CategoryEntity, Long> {
-    @Query("Select category from Category category")
+    @Query("Select category from CategoryEntity category")
     public List<CategoryEntity>findAll();
 
 }
