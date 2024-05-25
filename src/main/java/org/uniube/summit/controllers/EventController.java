@@ -19,7 +19,10 @@ public class EventController {
     public @ResponseBody List<Event>findAll(){
         return service.findAll();
     }
-
+    @GetMapping("/byName")
+    public @ResponseBody List<Event>findByName(@RequestParam(name = "name") String name){
+        return service.findByName(name);
+    }
     @GetMapping("/{id}")
     public @ResponseBody Event get(@PathVariable(name = "id") Long id){
         return service.get(id);

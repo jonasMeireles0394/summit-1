@@ -15,6 +15,9 @@ public class EventRepository {
     public List<EventEntity> findAll(){
         return repositoryJPA.findAll();
     }
+    public List<EventEntity> findByName(String name){
+        return repositoryJPA.findByName(name);
+    }
 
     public EventEntity get(Long id){
         return repositoryJPA.findById(id).orElse(null);

@@ -2,6 +2,8 @@ package org.uniube.summit.domain;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 public class Event {
@@ -13,6 +15,7 @@ public class Event {
     private Date enddate;
     private String observation;
     private String status;
+    private List<Image> images = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -76,5 +79,13 @@ public class Event {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }

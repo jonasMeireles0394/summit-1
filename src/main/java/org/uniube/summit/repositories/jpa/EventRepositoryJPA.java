@@ -12,4 +12,6 @@ public interface EventRepositoryJPA extends JpaRepository<EventEntity, Long> {
     @Query("Select event from EventEntity event")
     public List<EventEntity> findAll();
 
+    @Query("Select event from EventEntity event where event.name like ?1")
+    public List<EventEntity> findByName(String name);
 }
