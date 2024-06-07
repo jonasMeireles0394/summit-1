@@ -26,4 +26,24 @@ public class PersonRepository {
         }
 
     }
+
+    public PersonEntity get(Long id){
+        return repositoryJPA.findById(id).orElse(null);
+    }
+
+    public PersonEntity save(PersonEntity event){
+        return repositoryJPA.save(event);
+    }
+
+    public void deleteById(Long id){
+        repositoryJPA.deleteById(id);
+    }
+
+    public PersonEntity update(PersonEntity user){
+        if (user.getId() != null && repositoryJPA.existsById(user.getId())){
+            return repositoryJPA.save(user);
+        } else {
+            throw new IllegalArgumentException("Identificador deve ser nulo para operação de atualização!");
+        }
+    }
 }

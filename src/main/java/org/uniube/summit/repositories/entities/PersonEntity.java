@@ -10,11 +10,11 @@ public class PersonEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_seq")
     @SequenceGenerator(name = "person_seq", sequenceName = "person_seq", allocationSize=1)
     private Long id;
-    private Long imageId;
+    private Long imageid;
     private String username;
     private String profile;
-    private String displayName;
-    private Date birthDate;
+    private String displayname;
+    private Date birthdate;
     private String email;
     private String password;
 
@@ -26,12 +26,12 @@ public class PersonEntity {
         this.id = id;
     }
 
-    public Long getImageId() {
-        return imageId;
+    public Long getImageid() {
+        return imageid;
     }
 
-    public void setImageId(Long imageId) {
-        this.imageId = imageId;
+    public void setImageid(Long imageid) {
+        this.imageid = imageid;
     }
 
     public String getUsername() {
@@ -50,20 +50,20 @@ public class PersonEntity {
         this.profile = profile;
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public String getDisplayname() {
+        return displayname;
     }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public void setDisplayname(String displayname) {
+        this.displayname = displayname;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public Date getBirthdate() {
+        return birthdate;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getEmail() {

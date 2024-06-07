@@ -1,5 +1,6 @@
 package org.uniube.summit.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -10,6 +11,7 @@ public class Person {
     private String username;
     private String profile;
     private String displayName;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date birthDate;
     private String email;
     private String password;
